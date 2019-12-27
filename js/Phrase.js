@@ -16,21 +16,30 @@
          li.className = 'space';
        } else {
          li.className = `Hide letter ${this.phrase[i]}`;
+         li.classList += ' letter';
        }
        ul.appendChild(li);
     }
   }
 
     checkLetter(letter){
-      for(let i = 0; i < this.activePhrase.length; i ++){
-        if( letter === this.activePhrase[i]){
-          return true;
-        } else{
-          return false;
-        }
+      if(this.phrase.includes(letter)){
+        return true;
+      } else {
+        return false;
       }
-
    };
+
+   showMatchedLetter(letter){
+     const phraseLi = document.querySelectorAll('#phrase ul li');
+     const phraseLiArray = [...phraseLi];
+     phraseLiArray.forEach(li => {
+       if(li.textContent === letter){
+         li.className = 'letter show';
+       }
+     })
+   }
+
 
 
  }
