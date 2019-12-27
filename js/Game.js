@@ -8,11 +8,11 @@ const overlay = document.querySelector("#overlay");
    constructor(){
      this.missed = 0;
      this.phrases = [
-     new Phrase("Seth"),
-     new Phrase("Josiah"),
-     new Phrase("Sean"),
-     new Phrase("Max"),
-     new Phrase("Umbrella Avenue")
+     new Phrase("Dr Stone"),
+     new Phrase("My Hero Academia"),
+     new Phrase("The Boy and The Beast"),
+     new Phrase("Initial D"),
+     new Phrase("Your Name")
    ];
     this.activePhrase = null;
    }
@@ -22,6 +22,12 @@ const overlay = document.querySelector("#overlay");
   }
 
   startGame(){
+    const keyButtons = document.querySelectorAll(".keyrow button");
+    const keyButtonsArray = [...keyButtons];
+    keyButtonsArray.forEach(button => {
+      button.disabled = false;
+      button.className = "key"
+    });
     //resets phrase ul
     const oldLi = document.querySelectorAll("#phrase ul li");
     const oldLiArray = [...oldLi];
@@ -73,11 +79,15 @@ const overlay = document.querySelector("#overlay");
 
   handleInteraction(letter){
     if(this.activePhrase.checkLetter(letter)=== true){
+        event.target.disabled = true;
+        event.target.classList.add("chosen")
         this.activePhrase.showMatchedLetter(letter);
         if(this.checkForWin() === true){
           this.gameOver(true);
         }
       } else {
+        event.target.disabled = true;
+        event.target.classList.add("wrong");
         this.removeLife();
       }
   }

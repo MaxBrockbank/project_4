@@ -1,7 +1,7 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * app.js */
-
+document.querySelector("#game-over-message").innerHTML = "Hint: Anime Titles";
 let game = new Game();
 
 
