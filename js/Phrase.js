@@ -15,8 +15,7 @@
        if(this.phrase[i] === ' '){
          li.className = 'space';
        } else {
-         li.className = `Hide letter ${this.phrase[i]}`;
-         li.classList += ' letter';
+         li.className = `hide letter ${this.phrase[i]}`;
        }
        ul.appendChild(li);
     }
